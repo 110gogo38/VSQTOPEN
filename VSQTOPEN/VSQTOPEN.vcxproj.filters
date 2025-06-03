@@ -43,6 +43,9 @@
     <ClCompile Include="ThreadGetCamPic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Libs\Lib_Dlib\include\dlib\all\source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ThreadGetCamPic.h">

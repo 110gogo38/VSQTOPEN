@@ -64,8 +64,8 @@
     <LibraryPath>..\Libs\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>..\Libs\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Libs\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Libs\Lib_Dlib\include;..\Libs\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Libs\Lib_Dlib\lib;..\Libs\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
@@ -74,7 +74,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
-      <AdditionalDependencies>opencv_world490.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world490.lib;dlib20.0.0_minsizerel_64bit_msvc1944.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -100,7 +100,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
@@ -110,6 +110,7 @@
     <QtRcc Include="VSQTOPEN.qrc" />
     <QtUic Include="VSQTOPEN.ui" />
     <QtMoc Include="VSQTOPEN.h" />
+    <ClCompile Include="..\Libs\Lib_Dlib\include\dlib\all\source.cpp" />
     <ClCompile Include="ThreadGetCamPic.cpp" />
     <ClCompile Include="VSQTOPEN.cpp" />
     <ClCompile Include="main.cpp" />
