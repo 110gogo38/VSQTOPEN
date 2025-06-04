@@ -111,12 +111,16 @@
     <QtUic Include="VSQTOPEN.ui" />
     <QtMoc Include="VSQTOPEN.h" />
     <ClCompile Include="..\Libs\Lib_Dlib\include\dlib\all\source.cpp" />
+    <ClCompile Include="DlibEx.cpp" />
     <ClCompile Include="ThreadGetCamPic.cpp" />
     <ClCompile Include="VSQTOPEN.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ThreadGetCamPic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DlibEx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

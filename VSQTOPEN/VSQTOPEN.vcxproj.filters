@@ -46,10 +46,18 @@
     <ClCompile Include="..\Libs\Lib_Dlib\include\dlib\all\source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DlibEx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ThreadGetCamPic.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DlibEx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

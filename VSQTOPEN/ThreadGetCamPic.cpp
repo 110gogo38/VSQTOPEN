@@ -5,7 +5,7 @@
 ThreadGetCamPic::ThreadGetCamPic(QObject *parent)
 	: QThread(parent)
 {
-
+	m_stDlibEx.init();
 }
 
 ThreadGetCamPic::~ThreadGetCamPic()
@@ -37,8 +37,11 @@ void ThreadGetCamPic::run()
 			msleep(20);
 			continue; // Exit the loop if no more frames are available
 		}
+		cv_image<bgr_pixel> cimg(matTemp);
+		std::vector<rectangle> faces = m_stDlibEx.detectFaces(cimg);
+
 		imgTemp= QImage(matTemp.data, matTemp.cols, matTemp.rows, matTemp.step, QImage::Format_BGR888).copy();
-		emit sigSendCurImg(imgTemp);
+		emit sigSendCurImg(imgTemp, faces);
 		msleep(20);
 	}	
 }

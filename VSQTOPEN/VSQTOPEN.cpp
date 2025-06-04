@@ -1,6 +1,7 @@
 #include "VSQTOPEN.h"
 #include <opencv2/opencv.hpp> 
 #include <QFileDialog>
+#include <qpainter.h>
 
 VSQTOPEN::VSQTOPEN(QWidget *parent)
     : QWidget(parent)
@@ -71,11 +72,26 @@ void VSQTOPEN::onOpenCam()
 VSQTOPEN::~VSQTOPEN()
 {}
 
-void VSQTOPEN::onFreshCurImg(const QImage & img)
+void VSQTOPEN::onFreshCurImg(const QImage &img, const std::vector<rectangle> &vecFaces)
 {
 	m_imgSrc=img.copy();
 	m_img2Show = m_imgSrc.scaled(ui.labelPic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	m_pix2Show = QPixmap::fromImage(m_img2Show);
+
+	double scaleX = (double)m_img2Show.width() / (double)m_imgSrc.width();
+    double scaleY = (double)m_img2Show.height() / (double)m_imgSrc.height();
+
+	QPainter painter(&m_pix2Show);
+	painter.setPen(QColor(255, 0, 0));
+	for (int i = 0;i < vecFaces.size();i++)
+	{
+		int scaledLeft = (int)(vecFaces[i].left() * scaleX);
+        int scaledTop = (int)(vecFaces[i].top() * scaleY);
+        int scaledWidth = (int)(vecFaces[i].width() * scaleX);
+        int scaledHeight = (int)(vecFaces[i].height() * scaleY);
+		painter.drawRect(scaledLeft, scaledTop, scaledWidth, scaledHeight);
+	}
+
 	ui.labelPic->setPixmap(m_pix2Show);
 }
 

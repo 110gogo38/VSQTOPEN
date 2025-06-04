@@ -20,7 +20,7 @@ public slots:
 
     void onOpenCam();
     void on_btnOpen_clicked();
-    void onFreshCurImg(const QImage &img);
+    void onFreshCurImg(const QImage &img, const std::vector<rectangle> &vecFaces);
 
 private:
     Ui::VSQTOPENClass ui;
